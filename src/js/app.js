@@ -1,7 +1,8 @@
 import GameSavingLoader from './GameSavingLoader';
 
 export default async function savingGame() {
-  return GameSavingLoader.load()
-    .then((res) => res)
-    .catch(() => 'Ошибка!');
+  try {
+    const output = await GameSavingLoader.load();
+    return output;
+  } catch (err) { throw new Error('Ошибка в файле reader.js'); }
 }
